@@ -1,0 +1,21 @@
+type User {
+    id: ID!
+    username: String!
+    password: String!
+    fullname: String!
+    street: String!
+    city: String!
+    state: String!
+    zip: String!
+    phoneNumber: String!
+    email: String!
+}
+
+type Query {
+    findAllUsers: [User]!
+    countUsers: Int!
+}
+
+type Mutation {
+    newUser(firstName: String!, lastName: String!) : User!
+}

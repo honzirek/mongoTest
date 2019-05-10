@@ -1,6 +1,8 @@
 package org.marek.mongoTest;
 
 import com.mongodb.client.result.UpdateResult;
+import graphql.schema.idl.RuntimeWiring;
+import graphql.schema.idl.TypeRuntimeWiring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,5 +50,6 @@ public class RouterFunctionConfig {
     public Mono<ServerResponse> byUsernameLimit (ServerRequest request) {
         return ServerResponse.ok().body(userRepository.najdeLimit(request.queryParam("username").get())
                 .doOnError(x -> x.printStackTrace()), User.class);
+
     }
 }
