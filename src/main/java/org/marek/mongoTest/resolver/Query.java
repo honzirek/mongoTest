@@ -2,9 +2,7 @@ package org.marek.mongoTest.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.marek.mongoTest.User;
-import org.marek.mongoTest.UserRepository;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import org.marek.mongoTest.mongorepo.UserRepository;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

@@ -1,5 +1,6 @@
-package org.marek.mongoTest;
+package org.marek.mongoTest.mongorepo;
 
+import org.marek.mongoTest.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Query;
 //import org.springframework.data.querydsl.QuerydslPredicateExecutor;

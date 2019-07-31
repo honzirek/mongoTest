@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
 @AllArgsConstructor
 @Document
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "comp", type = "user")
 public class User {
 
     private static final long serialVersionUID = 1L;

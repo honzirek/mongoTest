@@ -1,16 +1,17 @@
 package org.marek.mongoTest;
 
-import graphql.Scalars;
-import graphql.schema.GraphQLObjectType;
-import graphql.schema.GraphQLSchema;
+import org.marek.mongoTest.mongorepo.UserRepository;
 import org.marek.mongoTest.resolver.Mutation;
 import org.marek.mongoTest.resolver.Query;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 @SpringBootApplication
+@EnableElasticsearchRepositories(basePackages={"org.marek.mongoTest.elasticrepo"})
+@EnableReactiveMongoRepositories(basePackages = {"org.marek.mongoTest.mongorepo"})
 public class MongoTestApplication {
 
 	public static void main(String[] args) {

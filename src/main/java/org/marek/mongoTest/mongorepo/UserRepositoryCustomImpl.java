@@ -1,6 +1,7 @@
-package org.marek.mongoTest;
+package org.marek.mongoTest.mongorepo;
 
 import com.mongodb.client.result.UpdateResult;
+import org.marek.mongoTest.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

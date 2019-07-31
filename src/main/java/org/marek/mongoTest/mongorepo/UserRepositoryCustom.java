@@ -1,6 +1,7 @@
-package org.marek.mongoTest;
+package org.marek.mongoTest.mongorepo;
 
 import com.mongodb.client.result.UpdateResult;
+import org.marek.mongoTest.User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
