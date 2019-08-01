@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.mongodb.core.CollectionOptions;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
@@ -20,7 +21,8 @@ import static org.springframework.data.mongodb.core.schema.JsonSchemaProperty.st
 public class DevelopmentConfig {
     @Bean
     public CommandLineRunner dataLoader(UserRepository userRepo, Mongo mongo, ReactiveMongoOperations operations,
-                                        ReactiveMongoTemplate mongoTemplate, UserElasticRepository userElasticRepository) {
+                                        ReactiveMongoTemplate mongoTemplate, UserElasticRepository userElasticRepository,
+                                        ElasticsearchTemplate elasticsearchTemplate) {
 
         MongoJsonSchema schema = MongoJsonSchema.builder()
                 .required("username", "password")
@@ -30,6 +32,8 @@ public class DevelopmentConfig {
                 .build();
 
         return args -> {
+            elasticsearchTemplate.deleteIndex(User.class);
+            elasticsearchTemplate.createIndex(User.class);
             User user1 = new User(null, "Marek", "password",
                     "Craig Walls", "123 North Street", "Cross Roads", "TX",
                     "76227", "123-123-1234", "craig@habuma.com", null);
@@ -42,8 +46,8 @@ public class DevelopmentConfig {
                         return*/ userRepo.save(user1)) /*;}*/
                     .doOnError(e -> System.out.println("test")).then().block();
 
+            System.out.println("id is " + user1.getId());
             userElasticRepository.save(user1);
-
         };
     }
 }

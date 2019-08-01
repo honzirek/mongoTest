@@ -1,5 +1,6 @@
 package org.marek.mongoTest;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Document
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "comp", type = "user")
+@JsonIgnoreProperties( value = {"email"} )
 public class User {
 
     private static final long serialVersionUID = 1L;

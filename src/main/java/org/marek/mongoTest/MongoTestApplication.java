@@ -1,5 +1,6 @@
 package org.marek.mongoTest;
 
+import org.marek.mongoTest.elasticrepo.UserElasticRepository;
 import org.marek.mongoTest.mongorepo.UserRepository;
 import org.marek.mongoTest.resolver.Mutation;
 import org.marek.mongoTest.resolver.Query;
@@ -19,8 +20,8 @@ public class MongoTestApplication {
 	}
 
 	@Bean
-	public Query query(UserRepository userRepository) {
-		return new Query(userRepository);
+	public Query query(UserRepository userRepository, UserElasticRepository userElasticRepository) {
+		return new Query(userRepository, userElasticRepository);
 	}
 
 	@Bean
