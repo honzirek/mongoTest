@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
+import org.springframework.data.elasticsearch.annotations.CompletionField;
+import org.springframework.data.elasticsearch.core.completion.Completion;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @NoArgsConstructor(access= AccessLevel.PRIVATE, force=true)
@@ -19,7 +22,9 @@ public class User {
     @Id
     private String id;
 
-    private String username;
+    @CompletionField(maxInputLength = 100)
+    @Field("test")
+    private Completion username;
 
     private String password;
     private String fullname;

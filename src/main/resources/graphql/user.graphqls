@@ -1,6 +1,6 @@
 type User {
     id: ID!
-    username: String!
+    username: Completion!
     password: String!
     fullname: String!
     street: String!
@@ -9,6 +9,10 @@ type User {
     zip: String!
     phoneNumber: String!
     email: String!
+}
+
+type Completion {
+    input: [String]!
 }
 
 type Query {
